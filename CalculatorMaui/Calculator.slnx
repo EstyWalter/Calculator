@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="../CalculatorSystem/CalculatorSystem.csproj" Id="a7939cab-60c1-42f0-87d7-859324285e82" />
+  <Project Path="../CalculatorTest/CalculatorTest.csproj" Id="3e8c20e6-a139-495e-8ecd-6bb7b27887d1" />
+  <Project Path="CalculatorMaui.csproj" />
+</Solution>

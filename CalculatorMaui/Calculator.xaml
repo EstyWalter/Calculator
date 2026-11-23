@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Calculator.Calculator"
+             Title="Calculator">
+    <ContentPage.Resources>
+        <Style x:Key="Important Buttons" TargetType="Button">
+            <Setter Property="Background">
+                <LinearGradientBrush EndPoint="1,0">
+                    <GradientStop Color="DarkMagenta" Offset="0"/>
+                    <GradientStop Color="LightBlue" Offset="0.7"/>
+                </LinearGradientBrush>
+            </Setter>
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="FontSize" Value="27"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+        <Style TargetType="Border">
+            <Setter Property="StrokeShape" Value="9"/>
+            <Setter Property="Stroke" Value="DarkMagenta"/>
+            <Setter Property="StrokeThickness" Value="5"/>
+            <Setter Property="StrokeDashArray" Value="0.2"/>
+        </Style>
+        <Style x:Key="SolutionRadioButtonStyle" TargetType="RadioButton">
+            <Setter Property="Grid.Column" Value="4" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="TextColor" Value="DarkMagenta" />
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid BackgroundColor="Azure" ColumnDefinitions="*,*,*,*,0.5*" RowDefinitions="*,*,*,*,*,*" ColumnSpacing="10" RowSpacing="10" Margin="10">
+        <Border Grid.Column="0" Grid.Row="0">
+            <Entry x:Name="Factor1" Text="{Binding factor1.Factorvalue}"/>
+        </Border>
+
+        <Border Grid.Column="1" Grid.Row="0">
+            <Entry x:Name="OperatorTxt" Text="{Binding o.OperatorText}"/>
+        </Border>
+
+        <Border StrokeShape="9" Grid.Column="2" Grid.Row="0">
+            <Entry x:Name="Factor2" Text="{Binding factor2.Factorvalue}"/>
+        </Border>
+
+        <Border Grid.Column="3" Grid.Row="0">
+            <Entry x:Name="Answer" IsReadOnly="True" Text="{Binding Answer}"/>
+        </Border>
+        <Border Grid.Row="0" Grid.Column="4" Grid.RowSpan="4" Margin="8,0,0,0" Padding="14,12" BackgroundColor="#FAF5FC" Stroke="#E1CBE8" StrokeThickness="1" VerticalOptions="Start">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="12" />
+            </Border.StrokeShape>
+            <VerticalStackLayout Spacing="6">
+                <Label x:Name="numofsolutionLbl" Text="Number of solutions" FontAttributes="Bold" FontSize="16" TextColor="#61256D" Margin="0,0,0,4" />
+                <RadioButton x:Name="Solution1Rb" Content="Solution 1" Style="{StaticResource SolutionRadioButtonStyle}" CheckedChanged="Solution_CheckedChanged" IsChecked="True" />
+                <RadioButton x:Name="Solution2Rb" Content="Solution 2" Style="{StaticResource SolutionRadioButtonStyle}" CheckedChanged="Solution_CheckedChanged" />
+                <RadioButton x:Name="Solution3Rb" Content="Solution 3" Style="{StaticResource SolutionRadioButtonStyle}" CheckedChanged="Solution_CheckedChanged" />
+            </VerticalStackLayout>
+        </Border>
+        <Button x:Name="Clear" Text="C" Style="{StaticResource Key=Important Buttons}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Clicked="Clear_Clicked"/>
+        <Button x:Name="DivideBtn" Text="/"  Grid.Column="3" Grid.Row="1" Clicked="OperatorBtn_Clicked"/>
+
+        <Button Text="7" Grid.Column="0" Grid.Row="2" Clicked="Button_Clicked"/>
+        <Button Text="8" Grid.Column="1" Grid.Row="2" Clicked="Button_Clicked"/>
+        <Button Text="9" Grid.Column="2" Grid.Row="2" Clicked="Button_Clicked"/>
+        <Button x:Name="MultiplyBtn" Text="*" Grid.Column="3" Grid.Row="2" Clicked="OperatorBtn_Clicked" />
+
+        <Button Text="4" Grid.Column="0" Grid.Row="3" Clicked="Button_Clicked"/>
+        <Button Text="5" Grid.Column="1" Grid.Row="3" Clicked="Button_Clicked"/>
+        <Button Text="6" Grid.Column="2" Grid.Row="3" Clicked="Button_Clicked"/>
+        <Button x:Name="SubtractBtn" Text="-" Grid.Column="3" Grid.Row="3" Clicked="OperatorBtn_Clicked"/>
+
+        <Button Text="1" Grid.Column="0" Grid.Row="4" Clicked="Button_Clicked"/>
+        <Button Text="2" Grid.Column="1" Grid.Row="4" Clicked="Button_Clicked"/>
+        <Button Text="3" Grid.Column="2" Grid.Row="4" Clicked="Button_Clicked"/>
+        <Button x:Name="AddBtn" Text="+" Grid.Column="3" Grid.Row="4" Clicked="OperatorBtn_Clicked"/>
+
+        <Button x:Name="NegBtn" Text="-/+" Grid.Column="0" Grid.Row="5" Clicked="SighnBtn_Clicked"/>
+        <Button Text="0" Grid.Column="1" Grid.Row="5" Clicked="Button_Clicked"/>
+        <Button x:Name="DecimalBtn" Text="." Grid.Column="2" Grid.Row="5" Clicked="SighnBtn_Clicked"/>
+        <Button x:Name="EqualsBtn" Text="=" Style="{StaticResource Key=Important Buttons}" Grid.Column="3" Grid.Row="5" Clicked="EqualsBtn_Clicked"/>
+    </Grid>
+</ContentPage>
